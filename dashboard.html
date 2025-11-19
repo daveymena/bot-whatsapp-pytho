@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Bot WhatsApp</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .status.online {
+            background: #10b981;
+            color: white;
+        }
+        .status.offline {
+            background: #ef4444;
+            color: white;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .stat:last-child {
+            border-bottom: none;
+        }
+        .stat-value {
+            font-weight: 600;
+            color: #333;
+        }
+        .qr-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .qr-code {
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 10px;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+        .agent-list {
+            list-style: none;
+        }
+        .agent-item {
+            padding: 10px;
+            margin: 5px 0;
+            background: #f9fafb;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .agent-icon {
+            width: 40px;
+            height: 40px;
+            background: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 15px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Dashboard Bot WhatsApp</h1>
+            <p style="color: #666; margin: 10px 0;">Tecnovariedades D&S</p>
+            <span class="status online" id="status">● Online</span>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>📊 Estadísticas</h3>
+                <div class="stat">
+                    <span>Conversaciones Activas</span>
+                    <span class="stat-value" id="conversations">0</span>
+                </div>
+                <div class="stat">
+                    <span>Mensajes Hoy</span>
+                    <span class="stat-value" id="messages">0</span>
+                </div>
+                <div class="stat">
+                    <span>Intentos de Reconexión</span>
+                    <span class="stat-value" id="reconnects">0</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🤖 Agentes Activos</h3>
+                <ul class="agent-list" id="agents">
+                    <li class="agent-item">
+                        <div class="agent-icon">V</div>
+                        <span>Agente de Ventas</span>
+                    </li>
+                    <li class="agent-item">
+                        <div class="agent-icon">P</div>
+                        <span>Agente de Productos</span>
+                    </li>
+                    <li class="agent-item">
+                        <div class="agent-icon">D</div>
+                        <span>Agente de Dropshipping</span>
+                    </li>
+                    <li class="agent-item">
+                        <div class="agent-icon">R</div>
+                        <span>Agente de Reservas</span>
+                    </li>
+                    <li class="agent-item">
+                        <div class="agent-icon">$</div>
+                        <span>Agente de Pagos</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>⚙️ Sistema</h3>
+                <div class="stat">
+                    <span>Python API</span>
+                    <span class="stat-value" id="python-status">✅</span>
+                </div>
+                <div class="stat">
+                    <span>Baileys Server</span>
+                    <span class="stat-value" id="baileys-status">✅</span>
+                </div>
+                <div class="stat">
+                    <span>Base de Datos</span>
+                    <span class="stat-value" id="db-status">✅</span>
+                </div>
+                <div class="stat">
+                    <span>IA Provider</span>
+                    <span class="stat-value">GROQ</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="qr-section">
+            <h3>📱 Conexión WhatsApp</h3>
+            <p style="color: #666; margin: 10px 0;">Escanea el QR code para conectar</p>
+            <div class="qr-code" id="qr-container">
+                <p>Cargando QR...</p>
+            </div>
+            <button onclick="refreshQR()">🔄 Actualizar QR</button>
+        </div>
+    </div>
+
+    <script>
+        async function updateStats() {
+            try {
+                const response = await fetch('http://localhost:3000/stats');
+                const data = await response.json();
+                
+                document.getElementById('conversations').textContent = data.active_conversations;
+                document.getElementById('reconnects').textContent = data.reconnect_attempts;
+            } catch (error) {
+                console.error('Error updating stats:', error);
+            }
+        }
+
+        async function checkStatus() {
+            try {
+                const response = await fetch('http://localhost:3000/health');
+                const data = await response.json();
+                
+                const statusEl = document.getElementById('status');
+                if (data.status === 'healthy') {
+                    statusEl.className = 'status online';
+                    statusEl.textContent = '● Online';
+                } else {
+                    statusEl.className = 'status offline';
+                    statusEl.textContent = '● Offline';
+                }
+            } catch (error) {
+                const statusEl = document.getElementById('status');
+                statusEl.className = 'status offline';
+                statusEl.textContent = '● Offline';
+            }
+        }
+
+        async function refreshQR() {
+            try {
+                const response = await fetch('http://localhost:3001/qr');
+                const data = await response.json();
+                
+                const qrContainer = document.getElementById('qr-container');
+                if (data.qr) {
+                    qrContainer.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(data.qr)}" alt="QR Code">`;
+                } else if (data.message === 'Already connected') {
+                    qrContainer.innerHTML = '<p style="color: #10b981; font-weight: 600;">✅ WhatsApp Conectado</p>';
+                } else {
+                    qrContainer.innerHTML = '<p>Esperando QR code...</p>';
+                }
+            } catch (error) {
+                document.getElementById('qr-container').innerHTML = '<p style="color: #ef4444;">Error cargando QR</p>';
+            }
+        }
+
+        // Actualizar cada 5 segundos
+        setInterval(() => {
+            updateStats();
+            checkStatus();
+        }, 5000);
+
+        // Cargar inicial
+        updateStats();
+        checkStatus();
+        refreshQR();
+    </script>
+</body>
+</html>

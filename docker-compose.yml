@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: whatsapp_bot_db
+    environment:
+      POSTGRES_DB: botwhatsapp
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - bot_network
+
+  baileys:
+    build:
+      context: .
+      dockerfile: Dockerfile.baileys
+    container_name: whatsapp_baileys
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - postgres
+    networks:
+      - bot_network
+    restart: unless-stopped
+
+  python_api:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    container_name: whatsapp_python_api
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres123@postgres:5432/botwhatsapp
+    depends_on:
+      - postgres
+      - baileys
+    volumes:
+      - ./data:/app/data
+    networks:
+      - bot_network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  bot_network:
+    driver: bridge
