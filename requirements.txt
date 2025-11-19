@@ -27,4 +27,4 @@ pytesseract==0.3.10
 SpeechRecognition==3.10.1
 
 # Email
-python-email-validator==2.1.0
+email-validator==2.1.0
