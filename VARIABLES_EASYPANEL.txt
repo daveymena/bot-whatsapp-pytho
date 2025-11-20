@@ -1,0 +1,273 @@
+# ============================================
+# VARIABLES DE ENTORNO PARA EASYPANEL
+# ============================================
+# Copia y pega estas variables en Easypanel
+# Servicio: bot-whatsapp-python
+# ============================================
+
+# ============================================
+# BASE DE DATOS (IMPORTANTE: Usar URL interna de Easypanel)
+# ============================================
+DATABASE_URL=postgresql://postgres:TU_PASSWORD_AQUI@bot-whatsapp-db:5432/botwhatsapp
+
+# ============================================
+# IA - GROQ (OBLIGATORIO)
+# ============================================
+# IMPORTANTE: Usa tus propias API keys de Groq
+# Obtén tus keys en: https://console.groq.com/keys
+GROQ_API_KEY=tu_groq_api_key_1_aqui
+GROQ_API_KEY_2=tu_groq_api_key_2_aqui
+GROQ_API_KEY_6=tu_groq_api_key_3_aqui
+GROQ_MODEL=llama-3.1-8b-instant
+GROQ_FALLBACK_MODELS=llama-3.1-8b-instant,gemma2-9b-it
+GROQ_MAX_TOKENS=300
+GROQ_TIMEOUT=60000
+GROQ_ENABLED=true
+ENABLE_GROQ_ROTATION=true
+
+# ============================================
+# IA - OLLAMA (OPCIONAL)
+# ============================================
+OLLAMA_BASE_URL=https://bot-whatsapp-ollama.sqaoeo.easypanel.host
+OLLAMA_BASE_URL_EXTERNAL=https://bot-whatsapp-ollama.sqaoeo.easypanel.host
+OLLAMA_MODEL=gemma3:4b
+OLLAMA_TIMEOUT=300000
+OLLAMA_MAX_TOKENS=600
+OLLAMA_ENABLED=true
+ENABLE_OLLAMA_FALLBACK=true
+
+# ============================================
+# IA - CONFIGURACIÓN GENERAL
+# ============================================
+AI_PROVIDER=groq
+DEFAULT_AI_PROVIDER=groq
+AI_FALLBACK_ENABLED=true
+AI_FALLBACK_ORDER=groq,ollama
+AI_AUTO_MODEL_DETECTION=true
+AI_USE_REASONING=true
+AI_REASONING_DEPTH=deep
+AI_REASONING_TIMEOUT=30000
+
+# ============================================
+# IA - OPENAI (OPCIONAL - para audio/imágenes)
+# ============================================
+OPENAI_API_KEY=
+OPENAI_ENABLED=false
+
+# ============================================
+# NEGOCIO
+# ============================================
+BUSINESS_NAME=Tecnovariedades D&S
+BUSINESS_ADDRESS=Colombia
+BOT_NAME=Tecnovariedades D&S Bot
+BOT_PHONE=+57 300 556 0186
+BUSINESS_PHONE=+57 300 556 0186
+BUSINESS_EMAIL=deinermena25@gmail.com
+BOT_LANGUAGE=es
+
+# ============================================
+# MÉTODOS DE PAGO - LOCALES
+# ============================================
+NEQUI_NUMBER=3136174267
+DAVIPLATA_NUMBER=3136174267
+BANK_NAME=Bancolombia
+BANK_ACCOUNT_TYPE=Ahorros
+BANK_ACCOUNT_NUMBER=12345678901
+BANK_ACCOUNT_HOLDER=Tecnovariedades D&S
+
+# ============================================
+# MÉTODOS DE PAGO - MERCADOPAGO
+# ============================================
+MERCADO_PAGO_ACCESS_TOKEN=tu_mercadopago_access_token
+MERCADO_PAGO_PUBLIC_KEY=tu_mercadopago_public_key
+MERCADO_PAGO_CLIENT_ID=tu_mercadopago_client_id
+MERCADOPAGO_ACCESS_TOKEN=tu_mercadopago_access_token
+MERCADOPAGO_ENABLED=true
+
+# ============================================
+# MÉTODOS DE PAGO - PAYPAL
+# ============================================
+PAYPAL_CLIENT_ID=tu_paypal_client_id
+PAYPAL_CLIENT_SECRET=tu_paypal_client_secret
+PAYPAL_MODE=live
+PAYPAL_API_URL=https://api-m.paypal.com
+PAYPAL_EMAIL=tu_email_paypal@gmail.com
+PAYPAL_ENABLED=true
+
+# ============================================
+# PAGOS - CONFIGURACIÓN GENERAL
+# ============================================
+COP_TO_USD_RATE=4000
+CASH_ON_DELIVERY_ENABLED=true
+DELIVERY_ZONES=Bogotá,Medellín,Cali
+DYNAMIC_PAYMENT_LINKS_ENABLED=true
+PAYMENT_LINK_EXPIRY_MINUTES=120
+PAYMENT_LINK_TOKEN_SECRET=tecnovariedades-payment-token-secret-2025-secure-key
+
+# ============================================
+# EMAIL - SMTP
+# ============================================
+# IMPORTANTE: Usa tu email y contraseña de aplicación de Gmail
+EMAIL_USER=tu_email@gmail.com
+EMAIL_PASS=tu_password_de_aplicacion_gmail
+EMAIL_FROM=tu_email@gmail.com
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+SMTP_USER=tu_email@gmail.com
+SMTP_PASSWORD=tu_password_de_aplicacion_gmail
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_FROM=tu_email@gmail.com
+SMTP_SECURE=false
+
+# ============================================
+# EMAIL - RESEND (OPCIONAL)
+# ============================================
+RESEND_API_KEY=re_MMdpZetB_PuLUUbLh6QQMdqvGozjxAGyaRESEND_FROM_EMAIL=onboarding@resend.dev
+
+# ============================================
+# EMAIL - GMAIL API (OPCIONAL)
+# ============================================
+GMAIL_USER=tu_email@gmail.com
+GMAIL_CLIENT_ID=tu_gmail_client_id
+GMAIL_CLIENT_SECRET=tu_gmail_client_secret
+GMAIL_REFRESH_TOKEN=tu_gmail_refresh_token
+
+# ============================================
+# DROPSHIPPING - DROPI
+# ============================================
+DROPI_AGENT_TOKEN=tu_dropi_agent_token_aqui
+DROPI_API_URL=https://app.dropi.co/api/v1
+DROPI_ENABLED=true
+DROPSHIPPING_SHIPPING_MIN=15000
+DROPSHIPPING_SHIPPING_MAX=20000
+DROPSHIPPING_PROFIT_MIN=20000
+DROPSHIPPING_PROFIT_MAX=30000
+
+# ============================================
+# WHATSAPP - CONFIGURACIÓN
+# ============================================
+WHATSAPP_PROVIDER=baileys
+SESSION_PATH=/data/whatsapp-sessions
+NEXT_PUBLIC_WHATSAPP_NUMBER=573005560186
+HEARTBEAT_INTERVAL=10000
+RECONNECT_ATTEMPTS_MAX=100
+RECONNECT_DELAY_BASE=500
+RECONNECT_DELAY_MAX=60000
+MAX_CONSECUTIVE_FAILURES=5
+CONNECTION_HEALTH_THRESHOLD=80
+ENABLE_CONNECTION_MONITOR=true
+ENABLE_SESSION_RECOVERY=true
+ENABLE_SOFT_RESET=true
+ENABLE_AGGRESSIVE_RESET=true
+ENABLE_CONSERVATIVE_MODE=true
+SESSION_BACKUP_COUNT=3
+SESSION_RECOVERY_TIMEOUT=30000
+CONNECTION_TIMEOUT=60000
+MESSAGE_QUEUE_SIZE=100
+
+# ============================================
+# WHATSAPP - SIMULACIÓN DE ESCRITURA
+# ============================================
+ENABLE_TYPING_SIMULATION=true
+TYPING_SPEED_MIN=40
+TYPING_SPEED_MAX=100
+TYPING_DELAY_MIN=2000
+TYPING_DELAY_MAX=4000
+ENABLE_HUMAN_DELAYS=true
+
+# ============================================
+# FUNCIONALIDADES - BOT
+# ============================================
+ENABLE_PROFESSIONAL_SALES=true
+ENABLE_PERSONALITY_SERVICE=true
+ENABLE_CONVERSATION_MEMORY=true
+CONVERSATION_MEMORY_TTL=86400000
+ENABLE_MEGAFLUJOS=true
+
+# ============================================
+# FUNCIONALIDADES - MULTIMEDIA
+# ============================================
+PHOTOS_ENABLED=true
+AUDIO_ENABLED=true
+VOICE_ENABLED=false
+SMART_PHOTOS_ENABLED=true
+SMART_PHOTOS_MAX_PER_PRODUCT=3
+SMART_PHOTOS_TEMP_DIR=./temp-images
+SMART_PHOTOS_CLEANUP_INTERVAL=86400000
+AUTO_SEND_PHOTOS=true
+
+# ============================================
+# FUNCIONALIDADES - IA AVANZADA
+# ============================================
+TTS_ENABLED=true
+VISION_AI_ENABLED=true
+OCR_ENABLED=false
+
+# ============================================
+# FUNCIONALIDADES - SISTEMA
+# ============================================
+HOT_RELOAD_ENABLED=true
+AI_ENABLED=true
+DYNAMIC_PRICING_ENABLED=true
+WEB_ENABLED=true
+WEB_AUTH=false
+
+# ============================================
+# ADMIN
+# ============================================
+ADMIN_EMAIL=daveymena16@gmail.com
+ADMIN_PASSWORD=6715320Dvd.
+
+# ============================================
+# LOGGING
+# ============================================
+LOG_LEVEL=info
+LOG_CONNECTION_EVENTS=true
+LOG_HEARTBEAT_EVENTS=false
+LOG_RECONNECTION_EVENTS=true
+
+# ============================================
+# SISTEMA - PYTHON
+# ============================================
+PYTHONUNBUFFERED=1
+PORT=5000
+PYTHONDONTWRITEBYTECODE=1
+
+# ============================================
+# SISTEMA - NODE
+# ============================================
+NODE_ENV=production
+
+# ============================================
+# URLS (Actualizar con tus dominios de Easypanel)
+# ============================================
+NEXT_PUBLIC_APP_URL=https://bot-whatsapp-bot-inteligente.sqaoeo.easypanel.host
+NEXTAUTH_URL=https://bot-whatsapp-bot-inteligente.sqaoeo.easypanel.host
+NEXTAUTH_SECRET=tu-secret-key-aqui-cambiar-en-produccion-2025
+JWT_SECRET=tu-jwt-secret-key-aqui-2025
+BASE_URL=https://bot-whatsapp-bot-inteligente.sqaoeo.easypanel.host
+FRONTEND_URL=https://bot-whatsapp-bot-inteligente.sqaoeo.easypanel.host
+BACKEND_URL=https://bot-whatsapp-bot-inteligente.sqaoeo.easypanel.host
+API_URL=https://bot-whatsapp-bot-inteligente.sqaoeo.easypanel.host/api
+
+# ============================================
+# SUSCRIPCIONES SAAS
+# ============================================
+SUBSCRIPTION_ENABLED=true
+FREE_TRIAL_DAYS=14
+SUBSCRIPTION_CHECK_INTERVAL=3600000
+ENABLE_EMAIL_NOTIFICATIONS=true
+ENABLE_ADMIN_NOTIFICATIONS=true
+ADMIN_NOTIFICATION_EMAIL=daveymena16@gmail.com
+ENABLE_USAGE_TRACKING=true
+METRICS_RETENTION_DAYS=90
+
+# ============================================
+# CONCURRENCIA
+# ============================================
+MAX_CONCURRENT_CONNECTIONS=1
+
+# ============================================
+# FIN DE VARIABLES
+# ============================================
