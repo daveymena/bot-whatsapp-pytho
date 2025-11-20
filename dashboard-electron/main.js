@@ -20,14 +20,19 @@ function createWindow() {
     frame: false
   });
 
-  // En desarrollo, cargar desde Vite
-  if (process.env.NODE_ENV === 'development') {
-    mainWindow.loadURL('http://localhost:3001');
-    mainWindow.webContents.openDevTools();
-  } else {
-    // En producción, cargar el build
-    mainWindow.loadFile(path.join(__dirname, 'dist', 'index.html'));
-  }
+  // OPCIÓN 1: Panel Admin (FUNCIONA AHORA - mientras arreglas el dashboard)
+  mainWindow.loadURL('https://bot-whatsapp-bot-inteligente.sqaoeo.easypanel.host/admin/dashboard');
+  
+  // OPCIÓN 2: Dashboard Next.js (cuando esté funcionando, descomenta esta línea)
+  // mainWindow.loadURL('https://bot-whatsapp-bot-inteligente.sqaoeo.easypanel.host');
+  
+  // OPCIÓN 2: Desarrollo local (descomenta para usar)
+  // if (process.env.NODE_ENV === 'development') {
+  //   mainWindow.loadURL('http://localhost:3001');
+  //   mainWindow.webContents.openDevTools();
+  // } else {
+  //   mainWindow.loadFile(path.join(__dirname, 'dist', 'index.html'));
+  // }
 
   mainWindow.on('closed', () => {
     mainWindow = null;

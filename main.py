@@ -82,7 +82,7 @@ async def startup_event():
     asyncio.create_task(cleanup_contexts_periodically())
     
     print("\n✅ BOT COMPLETAMENTE OPERATIVO")
-    print(f"🌐 Panel Admin: http://localhost:3000/admin/dashboard\n")
+    print(f"🌐 Panel Admin: http://localhost:5000/admin/dashboard\n")
 
 async def handle_incoming_message(phone: str, message: str):
     try:
